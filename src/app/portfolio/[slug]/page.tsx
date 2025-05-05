@@ -6,33 +6,23 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar, Tag, Layers, Scissors } from 'lucide-react'; // Layers for Difficulty, Scissors for Materials
 import { format } from 'date-fns';
 
+// Updated Mock data with user's designs
+const allPieces: OrigamiPiece[] = [
+    { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire, focusing on its unique robotic and orb-like features. Folded from vibrant tissue foil paper.', imageUrl: 'https://picsum.photos/seed/sts-defect/800/800', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper (30cm x 30cm)', dataAiHint: "slay the spire defect character" },
+    { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow. The double tissue paper allows for fine details in the clothing and weapon.', imageUrl: 'https://picsum.photos/seed/archer/800/800', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper (35cm x 35cm)', dataAiHint: "green archer fantasy" },
+    { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster, capturing the bird\'s confident stance and detailed tail plumage. The red paper highlights its characteristic features.', imageUrl: 'https://picsum.photos/seed/rooster/800/800', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate', materials: 'Origami Paper (20cm x 20cm)', dataAiHint: "origami rooster red" },
+    { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly. The Washi paper adds texture and suits the bird\'s form.', imageUrl: 'https://picsum.photos/seed/kingfisher/800/800', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper (18cm x 18cm)', dataAiHint: "blue bird kingfisher" },
+    { id: 'surfing-bird', title: 'Surfing Bird', slug: 'surfing-bird', description: 'An original design featuring a bird confidently riding a wave. A playful concept combining kraft paper for the bird and kami for the wave.', imageUrl: 'https://picsum.photos/seed/surfingbird/800/800', category: 'Original Designs', dateCreated: '2024-03-20', difficulty: 'Intermediate', materials: 'Kraft & Kami Paper (15cm & 20cm squares)', dataAiHint: "origami bird surfing wave" },
+    { id: 'simple-duck', title: 'Simple Duck', slug: 'simple-duck', description: 'A charming and straightforward origami duck with distinct yellow beak and feet. An accessible model great for beginners.', imageUrl: 'https://picsum.photos/seed/duck/800/800', category: 'Animals', dateCreated: '2024-02-10', difficulty: 'Beginner', materials: 'Construction Paper (15cm x 15cm)', dataAiHint: "origami duck simple paper" },
+];
+
 // Mock data fetching function - replace with actual data source access
 async function getOrigamiPieceBySlug(slug: string): Promise<OrigamiPiece | null> {
-  const allPieces: OrigamiPiece[] = [ // Same mock data as portfolio page for consistency
-    { id: '1', title: 'Graceful Crane', slug: 'graceful-crane', description: 'A classic symbol of peace and longevity, folded with intricate detail. The crane is one of the most recognized origami models worldwide.', imageUrl: 'https://picsum.photos/seed/crane/800/800', category: 'Animals', dateCreated: '2024-01-15', difficulty: 'Intermediate', materials: 'Kami Paper (15cm x 15cm)' },
-    { id: '2', title: 'Blooming Lotus', slug: 'blooming-lotus', description: 'An elegant lotus flower, perfect as a centerpiece or gift. This model uses multiple folds to create petal layers.', imageUrl: 'https://picsum.photos/seed/lotus/800/800', category: 'Flowers', dateCreated: '2024-02-10', difficulty: 'Intermediate', materials: 'Washi Paper (20cm x 20cm)' },
-    { id: '3', title: 'Geometric Star', slug: 'geometric-star', description: 'A modular origami star showcasing mesmerizing symmetry. Requires assembling multiple identical units.', imageUrl: 'https://picsum.photos/seed/star/800/800', category: 'Geometric', dateCreated: '2024-03-05', difficulty: 'Advanced', materials: 'Tant Paper (6 units, 7.5cm x 7.5cm each)' },
-    { id: '4', title: 'Playful Fox', slug: 'playful-fox', description: 'A charming little fox character folded from a single sheet. Features simple, expressive folds.', imageUrl: 'https://picsum.photos/seed/fox/800/800', category: 'Animals', dateCreated: '2024-04-20', difficulty: 'Beginner', materials: 'Kraft Paper (10cm x 10cm)' },
-    { id: '5', title: 'Abstract Sculpture', slug: 'abstract-sculpture', description: 'Exploring form and texture through complex folds and crumpling techniques. Inspired by natural rock formations.', imageUrl: 'https://picsum.photos/seed/abstract1/800/800', category: 'Abstract Art', dateCreated: '2024-05-12', difficulty: 'Advanced', materials: 'Elephant Hide Paper (30cm x 30cm)' },
-    { id: '6', title: 'Delicate Butterfly', slug: 'delicate-butterfly', description: 'A beautiful butterfly with detailed wing patterns achieved through careful thinning and shaping.', imageUrl: 'https://picsum.photos/seed/butterfly/800/800', category: 'Animals', dateCreated: '2024-06-01', difficulty: 'Intermediate', materials: 'Chiyogami Paper (12cm x 12cm)' },
-    { id: '7', title: 'Origami Rose', slug: 'origami-rose', description: 'A classic Kawasaki rose, known for its realistic appearance and challenging twist folds.', imageUrl: 'https://picsum.photos/seed/rose/800/800', category: 'Flowers', dateCreated: '2024-06-15', difficulty: 'Advanced', materials: 'Origami Paper (Special Rose Paper, 20cm x 20cm)' },
-    { id: '8', title: 'Modular Cube', slug: 'modular-cube', description: 'A simple yet satisfying modular origami project using the Sonobe unit. Great introduction to modular folding.', imageUrl: 'https://picsum.photos/seed/cube/800/800', category: 'Geometric', dateCreated: '2024-07-01', difficulty: 'Beginner', materials: 'Construction Paper (6 units, 10cm x 10cm each)' },
-  ];
   return allPieces.find(p => p.slug === slug) || null;
 }
 
 // Generate static paths if using SSG
 export async function generateStaticParams() {
- const allPieces: OrigamiPiece[] = [ /* Copy mock data here */
-    { id: '1', title: 'Graceful Crane', slug: 'graceful-crane', description: 'A classic symbol of peace...', imageUrl: 'https://picsum.photos/seed/crane/800/800', category: 'Animals', dateCreated: '2024-01-15', difficulty: 'Intermediate', materials: 'Kami Paper' },
-    { id: '2', title: 'Blooming Lotus', slug: 'blooming-lotus', description: 'An elegant lotus flower...', imageUrl: 'https://picsum.photos/seed/lotus/800/800', category: 'Flowers', dateCreated: '2024-02-10', difficulty: 'Intermediate', materials: 'Washi Paper' },
-    { id: '3', title: 'Geometric Star', slug: 'geometric-star', description: 'A modular origami star...', imageUrl: 'https://picsum.photos/seed/star/800/800', category: 'Geometric', dateCreated: '2024-03-05', difficulty: 'Advanced', materials: 'Tant Paper' },
-    { id: '4', title: 'Playful Fox', slug: 'playful-fox', description: 'A charming little fox character...', imageUrl: 'https://picsum.photos/seed/fox/800/800', category: 'Animals', dateCreated: '2024-04-20', difficulty: 'Beginner', materials: 'Kraft Paper' },
-    { id: '5', title: 'Abstract Sculpture', slug: 'abstract-sculpture', description: 'Exploring form and texture...', imageUrl: 'https://picsum.photos/seed/abstract1/800/800', category: 'Abstract Art', dateCreated: '2024-05-12', difficulty: 'Advanced', materials: 'Elephant Hide Paper' },
-    { id: '6', title: 'Delicate Butterfly', slug: 'delicate-butterfly', description: 'A beautiful butterfly...', imageUrl: 'https://picsum.photos/seed/butterfly/800/800', category: 'Animals', dateCreated: '2024-06-01', difficulty: 'Intermediate', materials: 'Chiyogami Paper' },
-    { id: '7', title: 'Origami Rose', slug: 'origami-rose', description: 'A classic Kawasaki rose...', imageUrl: 'https://picsum.photos/seed/rose/800/800', category: 'Flowers', dateCreated: '2024-06-15', difficulty: 'Advanced', materials: 'Origami Paper' },
-    { id: '8', title: 'Modular Cube', slug: 'modular-cube', description: 'A simple yet satisfying...', imageUrl: 'https://picsum.photos/seed/cube/800/800', category: 'Geometric', dateCreated: '2024-07-01', difficulty: 'Beginner', materials: 'Construction Paper' },
- ];
  return allPieces.map((piece) => ({
     slug: piece.slug,
   }));
@@ -76,7 +66,7 @@ export default async function OrigamiPiecePage({ params }: OrigamiPiecePageProps
                fill // Use fill instead of layout="fill"
                style={{ objectFit: "contain" }} // Use style prop for objectFit
                className="mix-blend-luminosity" // Helps blend image better on dark bg
-               data-ai-hint={`${piece.category} origami`}
+               data-ai-hint={piece.dataAiHint || `${piece.category} origami`}
              />
            </div>
 

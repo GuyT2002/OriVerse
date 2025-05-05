@@ -24,7 +24,7 @@ export function BlogPostCard({ post, className }: BlogPostCardProps) {
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={`origami blog ${post.category}`}
+              data-ai-hint={post.dataAiHint || `origami blog ${post.category}`} // Use provided hint or generate default
             />
           </div>
         </CardHeader>

@@ -7,18 +7,18 @@ import { BlogPostCard } from '@/components/blog-post-card';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import type { OrigamiPiece, BlogPost } from '@/types';
 
-// Mock data - replace with actual data fetching later
+// Mock data - Updated with user's designs
 const featuredOrigami: OrigamiPiece[] = [
-  { id: '1', title: 'Graceful Crane', slug: 'graceful-crane', description: 'A classic symbol of peace and longevity, folded with intricate detail.', imageUrl: 'https://picsum.photos/seed/crane/600/600', category: 'Animals', dateCreated: '2024-01-15', difficulty: 'Intermediate' },
-  { id: '2', title: 'Blooming Lotus', slug: 'blooming-lotus', description: 'An elegant lotus flower, perfect as a centerpiece or gift.', imageUrl: 'https://picsum.photos/seed/lotus/600/600', category: 'Flowers', dateCreated: '2024-02-10', difficulty: 'Intermediate' },
-  { id: '3', title: 'Geometric Star', slug: 'geometric-star', description: 'A modular origami star showcasing mesmerizing symmetry.', imageUrl: 'https://picsum.photos/seed/star/600/600', category: 'Geometric', dateCreated: '2024-03-05', difficulty: 'Advanced' },
-   { id: '4', title: 'Playful Fox', slug: 'playful-fox', description: 'A charming little fox character folded from a single sheet.', imageUrl: 'https://picsum.photos/seed/fox/600/600', category: 'Animals', dateCreated: '2024-04-20', difficulty: 'Beginner' },
+  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: 'https://picsum.photos/seed/sts-defect/600/600', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
+  { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow.', imageUrl: 'https://picsum.photos/seed/archer/600/600', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper', dataAiHint: "green archer fantasy" },
+  { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster, capturing the bird\'s stance and plumage.', imageUrl: 'https://picsum.photos/seed/rooster/600/600', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate', materials: 'Origami Paper', dataAiHint: "origami rooster red" },
+  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly.', imageUrl: 'https://picsum.photos/seed/kingfisher/600/600', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper', dataAiHint: "blue bird kingfisher" },
 ];
 
 const featuredPosts: BlogPost[] = [
-  { slug: 'beginner-crane-tutorial', title: 'Easy Origami Crane Tutorial for Beginners', date: '2024-05-01', excerpt: 'Learn to fold the iconic origami crane with our simple step-by-step guide. Perfect for starting your origami journey!', imageUrl: 'https://picsum.photos/seed/craneblog/800/450', content: '', category: 'Beginner Tutorials', skillLevel: 'Beginner' },
-  { slug: 'my-origami-journey', title: 'Finding Calm in Creases: My Origami Story', date: '2024-04-15', excerpt: 'Discover how the delicate art of paper folding became a source of mindfulness and creativity in my life.', imageUrl: 'https://picsum.photos/seed/journey/800/450', content: '', category: 'My Origami Journey' },
-  { slug: 'choosing-paper', title: 'The Best Paper for Your Origami Projects', date: '2024-03-28', excerpt: 'Unlock the secrets to selecting the perfect paper for different origami models, from simple folds to complex creations.', imageUrl: 'https://picsum.photos/seed/paper/800/450', content: '', category: 'Materials' },
+  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision.', imageUrl: 'https://picsum.photos/seed/defectblog/800/450', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
+  { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character.', imageUrl: 'https://picsum.photos/seed/archerblog/800/450', content: '', category: 'Original Designs', dataAiHint: "origami archer green detailed" },
+  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details.', imageUrl: 'https://picsum.photos/seed/kingfisherblog/800/450', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
 ];
 
 

@@ -23,7 +23,7 @@ export function OrigamiCard({ piece, className }: OrigamiCardProps) {
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={`${piece.category} origami`}
+              data-ai-hint={piece.dataAiHint || `${piece.category} origami`} // Use provided hint or generate default
             />
           </div>
         </CardHeader>

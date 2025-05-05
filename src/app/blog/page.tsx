@@ -9,17 +9,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
-// Mock data - replace with actual data fetching
+// Mock data - Updated with user's designs and related posts
 const allBlogPosts: BlogPost[] = [
-  { slug: 'beginner-crane-tutorial', title: 'Easy Origami Crane Tutorial for Beginners', date: '2024-05-01', excerpt: 'Learn to fold the iconic origami crane with our simple step-by-step guide. Perfect for starting your origami journey!', imageUrl: 'https://picsum.photos/seed/craneblog/800/450', content: '', category: 'Beginner Tutorials', skillLevel: 'Beginner' },
-  { slug: 'my-origami-journey', title: 'Finding Calm in Creases: My Origami Story', date: '2024-04-15', excerpt: 'Discover how the delicate art of paper folding became a source of mindfulness and creativity in my life.', imageUrl: 'https://picsum.photos/seed/journey/800/450', content: '', category: 'My Origami Journey' },
-  { slug: 'choosing-paper', title: 'The Best Paper for Your Origami Projects', date: '2024-03-28', excerpt: 'Unlock the secrets to selecting the perfect paper for different origami models, from simple folds to complex creations.', imageUrl: 'https://picsum.photos/seed/paper/800/450', content: '', category: 'Materials' },
-  { slug: 'advanced-rose-story', title: 'The Challenge of Folding the Kawasaki Rose', date: '2024-06-10', excerpt: 'A personal account of the trials and triumphs involved in mastering this notoriously difficult origami model.', imageUrl: 'https://picsum.photos/seed/rosestory/800/450', content: '', category: 'Advanced Creations' },
-  { slug: 'inspiration-nature', title: 'Origami Inspiration from the Natural World', date: '2024-06-25', excerpt: 'How observing nature sparks ideas for new origami designs and techniques.', imageUrl: 'https://picsum.photos/seed/natureinsp/800/450', content: '', category: 'Inspiration' },
-   { slug: 'simple-box-how-to', title: 'How to Fold a Simple Origami Box', date: '2024-07-01', excerpt: 'A practical tutorial for creating a small, sturdy box perfect for gifts or storage.', imageUrl: 'https://picsum.photos/seed/boxblog/800/450', content: '', category: 'Beginner Tutorials', skillLevel: 'Beginner'},
+  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision using tissue foil.', imageUrl: 'https://picsum.photos/seed/defectblog/800/450', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
+  { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character from double tissue paper.', imageUrl: 'https://picsum.photos/seed/archerblog/800/450', content: '', category: 'Original Designs', dataAiHint: "origami archer green detailed" },
+  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details with Washi paper.', imageUrl: 'https://picsum.photos/seed/kingfisherblog/800/450', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
+  { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques to achieve sharp creases and a lively posture when folding an origami rooster.', imageUrl: 'https://picsum.photos/seed/roosterblog/800/450', content: '', category: 'Intermediate Tutorials', skillLevel: 'Intermediate', dataAiHint: "origami rooster folding"},
+  { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: 'The story behind the original Surfing Bird design, combining different paper types for a unique effect.', imageUrl: 'https://picsum.photos/seed/surfingbirdblog/800/450', content: '', category: 'Original Designs', dataAiHint: "origami bird wave design" },
+   { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'A simple step-by-step guide to folding a cute origami duck, perfect for beginners and kids.', imageUrl: 'https://picsum.photos/seed/duckblog/800/450', content: '...', category: 'Beginner Tutorials', skillLevel: 'Beginner', dataAiHint: "origami duck tutorial easy"},
 ];
 
-const categories = ['All', 'Beginner Tutorials', 'Advanced Creations', 'My Origami Journey', 'Materials', 'Inspiration'];
+const categories = ['All', 'Beginner Tutorials', 'Intermediate Tutorials', 'Advanced Creations', 'Original Designs', 'Animals']; // Adjusted categories
 
 export default function BlogPage() {
   const [filter, setFilter] = useState<string>('All');
@@ -36,7 +36,7 @@ export default function BlogPage() {
     <div className="container max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-bold text-center mb-6">OriVerse Blog</h1>
       <p className="text-center text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-        Dive into articles about origami techniques, personal stories, material guides, and sources of inspiration.
+        Dive into articles about origami techniques, design processes, specific model tutorials, and personal folding stories.
       </p>
 
       {/* Filtering and Search */}

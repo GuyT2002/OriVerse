@@ -1,60 +1,101 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import type { BlogPost } from '@/types'; // Assuming Tutorial might inherit or be similar for content
+import type { BlogPost, Tutorial } from '@/types'; // Import Tutorial type
 import { Badge } from '@/components/ui/badge';
-import { Calendar, Tag, User } from 'lucide-react'; // User for author
+import { Calendar, Tag, User, PlayCircle } from 'lucide-react'; // User for author, PlayCircle for video
 import { format } from 'date-fns';
 import { Separator } from '@/components/ui/separator';
 import ReactMarkdown from 'react-markdown'; // Example: Use react-markdown if content is Markdown
 import { cn } from '@/lib/utils';
+import Link from 'next/link'; // Import Link for video link
 
 // Mock data fetching function - replace with actual data source access
-async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  const allPosts: BlogPost[] = [ // Same mock data as blog page for consistency
-    { slug: 'beginner-crane-tutorial', title: 'Easy Origami Crane Tutorial for Beginners', date: '2024-05-01', excerpt: 'Learn to fold the iconic origami crane...', imageUrl: 'https://picsum.photos/seed/craneblog/1200/600', content: `
-Folding the origami crane is a wonderful starting point. Here's how:
+async function getBlogPostBySlug(slug: string): Promise<BlogPost | Tutorial | null> {
+  const allPosts: Array<BlogPost | Tutorial> = [ // Combine BlogPost and Tutorial types
+    { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: 'https://picsum.photos/seed/defectblog/1200/600', content: `
+Folding 'The Defect' from Slay the Spire was a journey into complex geometry and character interpretation. Using tissue foil paper allowed for both sharp creases and the necessary shaping for its robotic form.
 
-1.  **Start with a square sheet of paper.** Color side up if using colored paper.
-2.  **Fold in half diagonally both ways.** Crease well and unfold.
-3.  **Fold in half horizontally and vertically.** Crease well and unfold.
-4.  **Bring the four corners together** to form a preliminary base (a smaller square).
-5.  **Fold the open edges** towards the center line on both sides.
-6.  **Fold the top point down** and crease well. Unfold these last three steps.
-7.  **Lift the bottom point up**, reversing the creases to form a petal fold.
-8.  **Repeat on the other side.**
-9.  **Fold the narrow points** towards the center line.
-10. **Inside reverse fold** these narrow points to create the head and tail.
-11. **Fold the wings down.**
+**Key Challenges:**
+*   **The Core:** Forming the central orb required precise pre-creasing and careful collapse.
+*   **Limbs:** Achieving the thin, jointed limbs while maintaining stability.
+*   **Color Change:** Managing the blue and yellow sections effectively from a single sheet.
 
-You've folded a crane! Practice makes perfect.
-    `, category: 'Beginner Tutorials' },
-    { slug: 'my-origami-journey', title: 'Finding Calm in Creases: My Origami Story', date: '2024-04-15', excerpt: 'Discover how paper folding became...', imageUrl: 'https://picsum.photos/seed/journey/1200/600', content: `
-It started unexpectedly. A simple paper airplane, then a boat, then a crane gifted by a friend. I found a quiet focus in the precise movements, a calm in the rustle of paper. Each successful fold felt like a small victory, a moment of creation from nothing but a flat sheet.
+This model pushes the boundaries of single-sheet origami, demanding patience and a deep understanding of paper manipulation. The final result, though challenging, captures the essence of this unique game character.
+    `, category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
 
-Origami became my escape during stressful times, a way to channel anxiety into something beautiful and tangible. The challenge of complex models pushed me, taught me patience, and showed me the rewards of persistence. It's more than a hobby; it's a form of mindfulness, a connection to an ancient art, and a constant source of wonder.
-    `, category: 'My Origami Journey' },
-     { slug: 'choosing-paper', title: 'The Best Paper for Your Origami Projects', date: '2024-03-28', excerpt: 'Unlock the secrets to selecting the perfect paper...', imageUrl: 'https://picsum.photos/seed/paper/1200/600', content: `
-The paper you choose can dramatically affect the final look and foldability of your origami model. Here's a quick guide:
+    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer...', imageUrl: 'https://picsum.photos/seed/archerblog/1200/600', content: `
+Creating the Origami Archer began with a simple sketch and the desire to capture a dynamic pose. Double tissue paper was chosen for its strength and ability to hold fine details.
 
-*   **Kami:** Standard, affordable origami paper. Thin, crisp, usually colored on one side. Great for beginners and simple models.
-*   **Washi:** Traditional Japanese paper, often beautifully patterned. Stronger and more textured than kami. Excellent for decorative pieces.
-*   **Tant:** Slightly thicker and textured, holds creases very well. Good for complex models and geometric shapes.
-*   **Kraft:** Sturdy, brown paper. Gives a rustic look, good for animal models or practice.
-*   **Elephant Hide/Lokta:** Very strong, textured papers. Ideal for tessellations, wet-folding, and sculptural pieces.
+**Design Process:**
+1.  **Base Selection:** Started with a modified bird base to establish the main body and limbs.
+2.  **Hood & Cape:** Developed specific folding sequences to create the flowing hood and cape.
+3.  **Bow & Arrow:** Integrated the bow as part of the arm structure, adding a separate small arrow.
+4.  **Refinement:** Numerous iterations were needed to refine the proportions, posture, and details like the quiver.
 
-Experiment to find what works best for you and the specific model!
-    `, category: 'Materials' },
-    // Add more posts with content...
+Designing original models is a rewarding process of trial, error, and discovery.
+    `, category: 'Original Designs', dataAiHint: "origami archer green detailed" },
+
+     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: 'https://picsum.photos/seed/kingfisherblog/1200/600', content: `
+The Crested Kingfisher presents a beautiful challenge with its distinctive crest and elegant shape. Washi paper provided the right texture and color.
+
+**Folding Techniques:**
+*   **Head & Crest:** Careful sink folds and point splitting were used to form the prominent crest.
+*   **Body Shaping:** Wet-folding techniques helped to achieve a rounded, natural body shape.
+*   **Color Integration:** Planning the folds to ensure the blue back and lighter underbelly were correctly positioned.
+*   **Perch:** The wooden block provides a simple yet effective display base.
+
+Focusing on these details helps bring the paper bird to life.
+    `, category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
+
+    { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques to achieve sharp creases...', imageUrl: 'https://picsum.photos/seed/roosterblog/1200/600', content: `
+Folding a convincing rooster relies on sharp creases and confident shaping. Standard origami paper works well.
+
+**Key Tips:**
+1.  **Sharp Creases:** Use a bone folder for precise, sharp creases, especially on the tail feathers.
+2.  **Head Details:** Pay attention to the comb and wattle – small reverse folds add realism.
+3.  **Legs & Stance:** Ensure the legs are sturdy and positioned for a stable, proud stance. Reinforce if needed.
+4.  **Tail Shaping:** Gently curve and separate the tail feathers for a more dynamic look.
+
+Practice these elements to elevate your origami rooster.
+    `, category: 'Intermediate Tutorials', skillLevel: 'Intermediate', dataAiHint: "origami rooster folding" },
+
+     { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: 'The story behind the original Surfing Bird design...', imageUrl: 'https://picsum.photos/seed/surfingbirdblog/1200/600', content: `
+The Surfing Bird was a fun, spontaneous idea. How could origami capture that playful motion?
+
+**Concept & Materials:**
+*   **The Bird:** A simple, traditional crane form was chosen for familiarity, folded from brown kraft paper for a rustic feel.
+*   **The Wave:** A separate sheet of blue Kami paper was folded into a basic wave/boat shape to act as the surfboard.
+*   **Assembly:** The bird is simply placed onto the wave – no complex connection needed, keeping it lighthearted.
+
+Sometimes the simplest combinations create the most charming results!
+    `, category: 'Original Designs', dataAiHint: "origami bird wave design" },
+
+    { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'A simple step-by-step guide to folding a cute origami duck...', imageUrl: 'https://picsum.photos/seed/duckblog/1200/600', content: `
+Let's fold a simple duck! You'll need one square sheet of paper (e.g., white with yellow on the back, or color one side yellow).
+
+1.  **Start White Side Up:** Fold the paper in half diagonally to make a triangle. Unfold.
+2.  **Fold Corners to Center:** Fold the left and right corners to meet at the center crease. You'll have a kite shape.
+3.  **Fold Tip Down:** Fold the top point (the narrow one) down along the top edge of the flaps you just made.
+4.  **Fold Small Tip Up:** Fold the very tip you just folded down back up slightly to form the beak.
+5.  **Fold in Half:** Fold the entire model in half along the original center crease, bringing the two halves together with the colored side out.
+6.  **Form the Neck:** Hold the main body. Pull the pointed (beak) section upwards and outwards, creating a crease to form the neck. Adjust the angle as you like.
+7.  **Tail (Optional):** You can make a small inside reverse fold at the back end to create a little tail.
+
+You've folded a duck! Color in an eye if you wish.
+    `, category: 'Beginner Tutorials', skillLevel: 'Beginner', videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', dataAiHint: "origami duck tutorial easy" }, // Example video link added
   ];
   return allPosts.find(p => p.slug === slug) || null;
 }
 
 // Generate static paths if using SSG
 export async function generateStaticParams() {
- const allPosts: BlogPost[] = [ // Need data access here too
-    { slug: 'beginner-crane-tutorial', title: 'Easy Origami Crane Tutorial for Beginners', date: '2024-05-01', excerpt: 'Learn to fold the iconic origami crane...', imageUrl: 'https://picsum.photos/seed/craneblog/1200/600', content: '...', category: 'Beginner Tutorials' },
-    { slug: 'my-origami-journey', title: 'Finding Calm in Creases: My Origami Story', date: '2024-04-15', excerpt: 'Discover how paper folding became...', imageUrl: 'https://picsum.photos/seed/journey/1200/600', content: '...', category: 'My Origami Journey' },
-     { slug: 'choosing-paper', title: 'The Best Paper for Your Origami Projects', date: '2024-03-28', excerpt: 'Unlock the secrets to selecting the perfect paper...', imageUrl: 'https://picsum.photos/seed/paper/1200/600', content: '...', category: 'Materials' },
+ const allPosts: Array<BlogPost | Tutorial> = [ // Need data access here too
+     { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: '...', imageUrl: '...', content: '...', category: 'Advanced Creations' },
+     { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs' },
+     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: '...', imageUrl: '...', content: '...', category: 'Animals'},
+     { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: '...', imageUrl: '...', content: '...', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
+     { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs'},
+     { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: '...', imageUrl: '...', content: '...', category: 'Beginner Tutorials', skillLevel: 'Beginner'},
  ];
  return allPosts.map((post) => ({
     slug: post.slug,
@@ -73,6 +114,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  // Type guard to check if the post is a Tutorial
+  const isTutorial = (p: BlogPost | Tutorial): p is Tutorial => {
+    return (p as Tutorial).skillLevel !== undefined;
+  }
+
   return (
     <div className="container max-w-screen-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
       {/* Use Tailwind Typography plugin and adjust for dark mode */}
@@ -86,7 +132,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               priority
-              data-ai-hint={`origami blog ${post.category}`}
+              data-ai-hint={post.dataAiHint || `origami blog ${post.category}`} // Use provided hint
             />
           </div>
 
@@ -104,10 +150,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                <Tag className="mr-1.5 h-4 w-4" />
                <Badge variant="outline">{post.category}</Badge>
             </div>
-             { 'skillLevel' in post && post.skillLevel && ( // Check if it's a tutorial with skill level
+             { isTutorial(post) && post.skillLevel && ( // Check if it's a tutorial with skill level
                <div className="flex items-center">
-                 <Badge variant="secondary">{post.skillLevel}</Badge>
+                 <Badge variant={
+                    post.skillLevel === 'Beginner' ? 'default' :
+                    post.skillLevel === 'Intermediate' ? 'secondary' : 'destructive'
+                 } className="capitalize">{post.skillLevel}</Badge>
                </div>
+             )}
+             { isTutorial(post) && post.videoUrl && ( // Check for video URL
+                <div className="flex items-center">
+                    <Link href={post.videoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-primary hover:underline">
+                        <PlayCircle className="mr-1.5 h-4 w-4" />
+                        <span>Watch Video</span>
+                    </Link>
+                </div>
              )}
           </div>
            <Separator className="!my-6 border-border/50"/> {/* Use ! to override prose styles if needed */}
@@ -131,9 +188,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 ),
                 a: ({node, ...props}) => <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer"/>,
                 h2: ({node, ...props}) => <h2 {...props} className="!mt-10 !mb-4" />, // Adjust heading margins
-                ul: ({node, ...props}) => <ul {...props} className="!my-4" />,
-                ol: ({node, ...props}) => <ol {...props} className="!my-4" />,
+                ul: ({node, ...props}) => <ul {...props} className="!my-4 list-disc !pl-6" />, // Ensure list styling
+                ol: ({node, ...props}) => <ol {...props} className="!my-4 list-decimal !pl-6" />, // Ensure list styling
                 p: ({node, ...props}) => <p {...props} className="!my-4" />,
+                strong: ({node, ...props}) => <strong {...props} className="font-semibold text-foreground" />, // Style bold text
             }}
          >
             {post.content}
