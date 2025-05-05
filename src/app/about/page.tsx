@@ -12,7 +12,7 @@ export default function AboutPage() {
           <div className="md:col-span-1">
              <div className="aspect-square relative rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/images/archer.jpg" // Placeholder personal image - replaced with local
+                src="/images/archer.jpg" // Updated to use local image
                 alt="Photo of the origami artist"
                 fill // Use fill instead of layout="fill"
                 style={{ objectFit: "cover" }} // Use style prop for objectFit
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 <CardHeader className="p-0">
                    <div className="aspect-video relative">
                        <Image
-                           src="/images/defect.jpg" // Placeholder - replaced with local
+                           src="/images/defect.jpg" // Updated to use local image
                            alt="Origami workspace with paper and tools"
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <CardHeader className="p-0">
                    <div className="aspect-video relative">
                        <Image
-                           src="/images/kingfisher.jpg" // Placeholder - replaced with local
+                           src="/images/kingfisher.jpg" // Updated to use local image
                            alt="Collection of finished origami pieces"
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit

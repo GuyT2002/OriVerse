@@ -19,7 +19,7 @@ export function BlogPostCard({ post, className }: BlogPostCardProps) {
         <CardHeader className="p-0">
           <div className="aspect-video relative overflow-hidden">
             <Image
-              src={post.imageUrl}
+              src={post.imageUrl} // Uses the URL from the post prop, updated to use public/images paths
               alt={post.title}
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit

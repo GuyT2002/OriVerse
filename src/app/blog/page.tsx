@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 
-// Mock data - Updated with local image paths
+// Mock data - Updated with local image paths from public/images
 const allBlogPosts: BlogPost[] = [
   { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision using tissue foil.', imageUrl: '/images/defect.jpg', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
   { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character from double tissue paper.', imageUrl: '/images/archer.jpg', content: '', category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" },

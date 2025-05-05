@@ -7,7 +7,7 @@ import { BlogPostCard } from '@/components/blog-post-card';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import type { OrigamiPiece, BlogPost } from '@/types';
 
-// Mock data - Updated with local image paths
+// Mock data - Updated with local image paths from public/images
 const featuredOrigami: OrigamiPiece[] = [
   { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: '/images/defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
   { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow.', imageUrl: '/images/archer.jpg', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper', dataAiHint: "green archer fantasy origami" },
@@ -28,7 +28,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center text-center text-white overflow-hidden">
         <Image
-          src="/images/defect.jpg" // Use a local image from public/images
+          src="/images/defect.jpg" // Updated to use local image
           alt="Stunning Origami Piece Hero Image - The Defect"
           fill // Use fill instead of layout="fill"
           style={{ objectFit: "cover" }} // Use style prop for objectFit
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="container max-w-screen-xl px-4 mx-auto text-center">
           <div className="relative inline-block mx-auto max-w-lg w-full aspect-[5/3]"> {/* Adjust aspect ratio if needed */}
             <Image
-              src="/images/surfing_bird.jpg"
+              src="/images/surfing_bird.jpg" // Updated to use local image
               alt="Surfing Bird origami"
               fill
               style={{ objectFit: 'contain' }}

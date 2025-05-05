@@ -9,7 +9,7 @@ import type { BlogPost, OrigamiPiece } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
 // Mock data - replace with actual data fetching/search API call
-// Updated with local image paths
+// Updated with local image paths from public/images
 const allBlogPosts: BlogPost[] = [
    { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'Learn the classic duck fold. A perfect start!', imageUrl: '/images/duck.jpg', content: '', category: 'Beginner Tutorials', skillLevel: 'Beginner' },
    { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques for sharp creases...', imageUrl: '/images/rooster.jpg', content: '', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},

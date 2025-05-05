@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import { Calendar, Tag, Layers, Scissors } from 'lucide-react'; // Layers for Difficulty, Scissors for Materials
 import { format } from 'date-fns';
 
-// Updated Mock data with local image paths
+// Updated Mock data with local image paths from public/images
 const allPieces: OrigamiPiece[] = [
     { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire, focusing on its unique robotic and orb-like features. Folded from vibrant tissue foil paper.', imageUrl: '/images/defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper (30cm x 30cm)', dataAiHint: "slay the spire defect character" },
     { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow. The double tissue paper allows for fine details in the clothing and weapon.', imageUrl: '/images/archer.jpg', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper (35cm x 35cm)', dataAiHint: "green archer fantasy origami" },
@@ -61,7 +61,7 @@ export default async function OrigamiPiecePage({ params }: OrigamiPiecePageProps
            {/* Image */}
            <div className="md:col-span-3 aspect-square relative rounded-lg overflow-hidden shadow-md bg-muted/30">
              <Image
-               src={piece.imageUrl}
+               src={piece.imageUrl} // Uses the URL from the piece prop, updated to use public/images paths
                alt={piece.title}
                fill // Use fill instead of layout="fill"
                style={{ objectFit: "contain" }} // Use style prop for objectFit

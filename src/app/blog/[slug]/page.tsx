@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link'; // Import Link for video link
 
 // Mock data fetching function - replace with actual data source access
-// Updated with local image paths
+// Updated with local image paths from public/images
 async function getBlogPostBySlug(slug: string): Promise<BlogPost | Tutorial | null> {
   const allPosts: Array<BlogPost | Tutorial> = [ // Combine BlogPost and Tutorial types
     { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: '/images/defect.jpg', content: `
@@ -91,6 +91,7 @@ You've folded a duck! Color in an eye if you wish.
 // Generate static paths if using SSG
 export async function generateStaticParams() {
  // Use the same data source as getBlogPostBySlug for consistency
+ // Updated with local image paths from public/images
  const allPosts: Array<BlogPost | Tutorial> = [
      { slug: 'folding-the-defect', title: '...', date: '...', excerpt: '...', imageUrl: '/images/defect.jpg', content: '...', category: 'Advanced Creations' },
      { slug: 'designing-the-archer', title: '...', date: '...', excerpt: '...', imageUrl: '/images/archer.jpg', content: '...', category: 'Original Designs' },
@@ -129,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
            {/* Featured Image */}
           <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-md mb-6">
             <Image
-              src={post.imageUrl}
+              src={post.imageUrl} // Uses the URL from the post prop, updated to use public/images paths
               alt={post.title}
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
@@ -181,7 +182,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 img: ({node, ...props}) => (
                     <Image
                         {...props}
-                        src={props.src || ""}
+                        src={props.src || ""} // Uses the src from Markdown, assumes it's correct path
                         width={800} // Example width
                         height={450} // Example height
                         className="rounded-md shadow-sm mx-auto my-6" // Added my-6 for margin

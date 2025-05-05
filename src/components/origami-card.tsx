@@ -18,7 +18,7 @@ export function OrigamiCard({ piece, className }: OrigamiCardProps) {
         <CardHeader className="p-0">
           <div className="aspect-square relative overflow-hidden">
             <Image
-              src={piece.imageUrl}
+              src={piece.imageUrl} // Uses the URL from the piece prop, updated to use public/images paths
               alt={piece.title}
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
