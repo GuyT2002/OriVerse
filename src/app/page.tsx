@@ -84,6 +84,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Image Section - Example Surfing Bird */}
+      <section className="py-16 lg:py-24 bg-background">
+        <div className="container max-w-screen-xl px-4 mx-auto text-center">
+          <div className="relative inline-block mx-auto max-w-lg w-full aspect-[5/3]"> {/* Adjust aspect ratio if needed */}
+            <Image
+              src="/images/surfing_bird.jpg"
+              alt="Surfing Bird origami"
+              fill
+              style={{ objectFit: 'contain' }}
+              sizes="(max-width: 768px) 100vw, 500px"
+              className="rounded-lg shadow-md"
+              data-ai-hint="origami bird surfing wave"
+            />
+          </div>
+          <p className="mt-4 text-muted-foreground">An example of an original design: The Surfing Bird.</p>
+        </div>
+      </section>
+
+
        {/* Featured Blog Posts Section */}
       <section className="py-16 lg:py-24 bg-secondary">
         <div className="container max-w-screen-xl px-4 mx-auto"> {/* Added mx-auto */}
