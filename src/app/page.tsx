@@ -7,18 +7,18 @@ import { BlogPostCard } from '@/components/blog-post-card';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import type { OrigamiPiece, BlogPost } from '@/types';
 
-// Mock data - Updated with user's designs
+// Mock data - Updated with local image paths
 const featuredOrigami: OrigamiPiece[] = [
-  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: 'https://picsum.photos/seed/sts-defect/600/600', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
-  { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow.', imageUrl: 'https://picsum.photos/seed/greenarcher/600/600', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper', dataAiHint: "green archer fantasy origami" }, // Updated image seed and hint
-  { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster, capturing the bird\'s stance and plumage.', imageUrl: 'https://picsum.photos/seed/rooster/600/600', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate', materials: 'Origami Paper', dataAiHint: "origami rooster red" },
-  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly.', imageUrl: 'https://picsum.photos/seed/kingfisher/600/600', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper', dataAiHint: "blue bird kingfisher" },
+  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: '/images/defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
+  { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow.', imageUrl: '/images/archer.jpg', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper', dataAiHint: "green archer fantasy origami" },
+  { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster, capturing the bird\'s stance and plumage.', imageUrl: '/images/rooster.jpg', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate', materials: 'Origami Paper', dataAiHint: "origami rooster red" },
+  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly.', imageUrl: '/images/kingfisher.jpg', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper', dataAiHint: "blue bird kingfisher" },
 ];
 
 const featuredPosts: BlogPost[] = [
-  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision.', imageUrl: 'https://picsum.photos/seed/defectblog/800/450', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
-  { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character.', imageUrl: 'https://picsum.photos/seed/archerblogdetailed/800/450', content: '', category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" }, // Updated image seed and hint
-  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details.', imageUrl: 'https://picsum.photos/seed/kingfisherblog/800/450', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
+  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision.', imageUrl: '/images/defect.jpg', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
+  { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character.', imageUrl: '/images/archer.jpg', content: '', category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" },
+  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details.', imageUrl: '/images/kingfisher.jpg', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
 ];
 
 
@@ -28,14 +28,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center text-center text-white overflow-hidden">
         <Image
-          src="https://picsum.photos/seed/hero/1600/900"
-          alt="Stunning Origami Piece Hero Image"
+          src="/images/defect.jpg" // Use a local image from public/images
+          alt="Stunning Origami Piece Hero Image - The Defect"
           fill // Use fill instead of layout="fill"
           style={{ objectFit: "cover" }} // Use style prop for objectFit
           quality={85}
           className="absolute inset-0 z-0"
           priority // Load hero image faster
-          data-ai-hint="origami abstract art"
+          data-ai-hint="origami character blue yellow" // Update AI hint
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 z-10"></div> {/* Increased overlay darkness */}

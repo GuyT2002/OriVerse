@@ -10,9 +10,10 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link'; // Import Link for video link
 
 // Mock data fetching function - replace with actual data source access
+// Updated with local image paths
 async function getBlogPostBySlug(slug: string): Promise<BlogPost | Tutorial | null> {
   const allPosts: Array<BlogPost | Tutorial> = [ // Combine BlogPost and Tutorial types
-    { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: 'https://picsum.photos/seed/defectblog/1200/600', content: `
+    { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: '/images/defect.jpg', content: `
 Folding 'The Defect' from Slay the Spire was a journey into complex geometry and character interpretation. Using tissue foil paper allowed for both sharp creases and the necessary shaping for its robotic form.
 
 **Key Challenges:**
@@ -23,7 +24,7 @@ Folding 'The Defect' from Slay the Spire was a journey into complex geometry and
 This model pushes the boundaries of single-sheet origami, demanding patience and a deep understanding of paper manipulation. The final result, though challenging, captures the essence of this unique game character.
     `, category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
 
-    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer...', imageUrl: 'https://picsum.photos/seed/archerblogdetailed/1200/600', content: `
+    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer...', imageUrl: '/images/archer.jpg', content: `
 Creating the Origami Archer began with a simple sketch and the desire to capture a dynamic pose. Double tissue paper was chosen for its strength and ability to hold fine details.
 
 **Design Process:**
@@ -33,9 +34,9 @@ Creating the Origami Archer began with a simple sketch and the desire to capture
 4.  **Refinement:** Numerous iterations were needed to refine the proportions, posture, and details like the quiver.
 
 Designing original models is a rewarding process of trial, error, and discovery.
-    `, category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" }, // Updated image seed and hint
+    `, category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" },
 
-     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: 'https://picsum.photos/seed/kingfisherblog/1200/600', content: `
+     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: '/images/kingfisher.jpg', content: `
 The Crested Kingfisher presents a beautiful challenge with its distinctive crest and elegant shape. Washi paper provided the right texture and color.
 
 **Folding Techniques:**
@@ -47,7 +48,7 @@ The Crested Kingfisher presents a beautiful challenge with its distinctive crest
 Focusing on these details helps bring the paper bird to life.
     `, category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
 
-    { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques to achieve sharp creases...', imageUrl: 'https://picsum.photos/seed/roosterblog/1200/600', content: `
+    { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques to achieve sharp creases...', imageUrl: '/images/rooster.jpg', content: `
 Folding a convincing rooster relies on sharp creases and confident shaping. Standard origami paper works well.
 
 **Key Tips:**
@@ -59,7 +60,7 @@ Folding a convincing rooster relies on sharp creases and confident shaping. Stan
 Practice these elements to elevate your origami rooster.
     `, category: 'Intermediate Tutorials', skillLevel: 'Intermediate', dataAiHint: "origami rooster folding" },
 
-     { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: 'The story behind the original Surfing Bird design...', imageUrl: 'https://picsum.photos/seed/surfingbirdblog/1200/600', content: `
+     { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: 'The story behind the original Surfing Bird design...', imageUrl: '/images/surfing_bird.jpg', content: `
 The Surfing Bird was a fun, spontaneous idea. How could origami capture that playful motion?
 
 **Concept & Materials:**
@@ -70,7 +71,7 @@ The Surfing Bird was a fun, spontaneous idea. How could origami capture that pla
 Sometimes the simplest combinations create the most charming results!
     `, category: 'Original Designs', dataAiHint: "origami bird wave design" },
 
-    { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'A simple step-by-step guide to folding a cute origami duck...', imageUrl: 'https://picsum.photos/seed/duckblog/1200/600', content: `
+    { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'A simple step-by-step guide to folding a cute origami duck...', imageUrl: '/images/duck.jpg', content: `
 Let's fold a simple duck! You'll need one square sheet of paper (e.g., white with yellow on the back, or color one side yellow).
 
 1.  **Start White Side Up:** Fold the paper in half diagonally to make a triangle. Unfold.
@@ -89,13 +90,14 @@ You've folded a duck! Color in an eye if you wish.
 
 // Generate static paths if using SSG
 export async function generateStaticParams() {
- const allPosts: Array<BlogPost | Tutorial> = [ // Need data access here too
-     { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: '...', imageUrl: '...', content: '...', category: 'Advanced Creations' },
-     { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs' }, // Keep archer here
-     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: '...', imageUrl: '...', content: '...', category: 'Animals'},
-     { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: '...', imageUrl: '...', content: '...', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
-     { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs'},
-     { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: '...', imageUrl: '...', content: '...', category: 'Beginner Tutorials', skillLevel: 'Beginner'},
+ // Use the same data source as getBlogPostBySlug for consistency
+ const allPosts: Array<BlogPost | Tutorial> = [
+     { slug: 'folding-the-defect', title: '...', date: '...', excerpt: '...', imageUrl: '/images/defect.jpg', content: '...', category: 'Advanced Creations' },
+     { slug: 'designing-the-archer', title: '...', date: '...', excerpt: '...', imageUrl: '/images/archer.jpg', content: '...', category: 'Original Designs' },
+     { slug: 'kingfisher-on-perch', title: '...', date: '...', excerpt: '...', imageUrl: '/images/kingfisher.jpg', content: '...', category: 'Animals'},
+     { slug: 'rooster-folding-tips', title: '...', date: '...', excerpt: '...', imageUrl: '/images/rooster.jpg', content: '...', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
+     { slug: 'playful-surfing-bird', title: '...', date: '...', excerpt: '...', imageUrl: '/images/surfing_bird.jpg', content: '...', category: 'Original Designs'},
+     { slug: 'beginner-duck-tutorial', title: '...', date: '...', excerpt: '...', imageUrl: '/images/duck.jpg', content: '...', category: 'Beginner Tutorials', skillLevel: 'Beginner'},
  ];
  return allPosts.map((post) => ({
     slug: post.slug,
@@ -133,6 +135,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               priority
               data-ai-hint={post.dataAiHint || `origami blog ${post.category}`} // Use provided hint
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 768px" // Provide sizes prop
             />
           </div>
 
@@ -179,11 +182,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <Image
                         {...props}
                         src={props.src || ""}
-                        width={800}
-                        height={450}
+                        width={800} // Example width
+                        height={450} // Example height
                         className="rounded-md shadow-sm mx-auto my-6" // Added my-6 for margin
                         style={{ objectFit: 'contain', width: '100%', height: 'auto' }} // Ensure responsive image
                         alt={props.alt || ""}
+                        // Add sizes prop if image widths vary significantly
+                        sizes="(max-width: 768px) 100vw, 768px"
                      />
                 ),
                 a: ({node, ...props}) => <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer"/>,

@@ -10,12 +10,13 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
+      // Remove picsum.photos pattern as local images are used now
+      // {
+      //   protocol: 'https',
+      //   hostname: 'picsum.photos',
+      //   port: '',
+      //   pathname: '/**',
+      // },
     ],
   },
 };
