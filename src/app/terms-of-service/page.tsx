@@ -3,7 +3,7 @@ export default function TermsOfServicePage() {
   return (
     <div className="container max-w-screen-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
-      <div className="prose dark:prose-invert max-w-none space-y-4">
+      <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4">
         <p><strong>Last Updated: {new Date().toLocaleDateString()}</strong></p>
 
         <p>Welcome to OriVerse! These Terms of Service ("Terms") govern your use of the OriVerse website located at [Your Website URL] (the "Site") and any related services provided by OriVerse.</p>
@@ -37,7 +37,7 @@ export default function TermsOfServicePage() {
         <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms on the Site. Your continued use of the Site after any such changes constitutes your acceptance of the new Terms.</p>
 
         <h2>Contact Us</h2>
-        <p>If you have any questions about these Terms, please contact us at: [Your Contact Email]</p>
+        <p>If you have any questions about these Terms, please contact us at: contact@oriverse.com</p>
 
          <p><em>This is a template Terms of Service. You should consult with a legal professional to ensure it is appropriate for your specific situation and location.</em></p>
       </div>

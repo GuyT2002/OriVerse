@@ -30,15 +30,15 @@ export default function Home() {
         <Image
           src="https://picsum.photos/seed/hero/1600/900"
           alt="Stunning Origami Piece Hero Image"
-          layout="fill"
-          objectFit="cover"
+          fill // Use fill instead of layout="fill"
+          style={{ objectFit: "cover" }} // Use style prop for objectFit
           quality={85}
           className="absolute inset-0 z-0"
           priority // Load hero image faster
           data-ai-hint="origami abstract art"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+        <div className="absolute inset-0 bg-black/60 z-10"></div> {/* Increased overlay darkness */}
         {/* Content */}
         <div className="relative z-20 container max-w-screen-lg px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight shadow-text">
@@ -53,7 +53,7 @@ export default function Home() {
                 View Portfolio <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+             <Button asChild size="lg" variant="outline" className="border-foreground/80 text-foreground hover:bg-foreground/10">
               <Link href="/tutorials">
                 Start Folding
               </Link>
@@ -111,7 +111,3 @@ export default function Home() {
     </div>
   );
 }
-
-// Add a simple text shadow utility if needed, or use Tailwind's text-shadow plugin if installed
-// In globals.css or a utility CSS file:
-// .shadow-text { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }

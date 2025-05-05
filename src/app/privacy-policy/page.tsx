@@ -3,7 +3,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="container max-w-screen-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
-      <div className="prose dark:prose-invert max-w-none space-y-4">
+      <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4">
         <p><strong>Last Updated: {new Date().toLocaleDateString()}</strong></p>
 
         <p>Welcome to OriVerse! Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website [Your Website URL]. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.</p>
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
         <p>We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible.</p>
 
         <h2>Contact Us</h2>
-        <p>If you have questions or comments about this Privacy Policy, please contact us at: [Your Contact Email]</p>
+        <p>If you have questions or comments about this Privacy Policy, please contact us at: contact@oriverse.com</p>
 
         <p><em>This is a template privacy policy. You should consult with a legal professional to ensure it meets all legal requirements for your specific situation and location.</em></p>
       </div>

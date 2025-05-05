@@ -20,8 +20,8 @@ export function OrigamiCard({ piece, className }: OrigamiCardProps) {
             <Image
               src={piece.imageUrl}
               alt={piece.title}
-              layout="fill"
-              objectFit="cover"
+              fill // Use fill instead of layout="fill"
+              style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={`${piece.category} origami`}
             />
@@ -33,7 +33,7 @@ export function OrigamiCard({ piece, className }: OrigamiCardProps) {
         </CardContent>
         <CardFooter className="p-4 pt-0 flex justify-between items-center">
            <Badge variant="secondary">{piece.category}</Badge>
-           <div className="flex items-center text-xs text-accent-foreground group-hover:text-primary transition-colors">
+           <div className="flex items-center text-xs text-primary group-hover:text-primary/80 transition-colors"> {/* Adjusted hover color for dark theme */}
              View Details <ArrowRight className="ml-1 h-3 w-3"/>
            </div>
         </CardFooter>

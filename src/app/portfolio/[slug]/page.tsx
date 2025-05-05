@@ -23,7 +23,16 @@ async function getOrigamiPieceBySlug(slug: string): Promise<OrigamiPiece | null>
 
 // Generate static paths if using SSG
 export async function generateStaticParams() {
- const allPieces: OrigamiPiece[] = [ /* Copy mock data here */ ]; // Need data access here too
+ const allPieces: OrigamiPiece[] = [ /* Copy mock data here */
+    { id: '1', title: 'Graceful Crane', slug: 'graceful-crane', description: 'A classic symbol of peace...', imageUrl: 'https://picsum.photos/seed/crane/800/800', category: 'Animals', dateCreated: '2024-01-15', difficulty: 'Intermediate', materials: 'Kami Paper' },
+    { id: '2', title: 'Blooming Lotus', slug: 'blooming-lotus', description: 'An elegant lotus flower...', imageUrl: 'https://picsum.photos/seed/lotus/800/800', category: 'Flowers', dateCreated: '2024-02-10', difficulty: 'Intermediate', materials: 'Washi Paper' },
+    { id: '3', title: 'Geometric Star', slug: 'geometric-star', description: 'A modular origami star...', imageUrl: 'https://picsum.photos/seed/star/800/800', category: 'Geometric', dateCreated: '2024-03-05', difficulty: 'Advanced', materials: 'Tant Paper' },
+    { id: '4', title: 'Playful Fox', slug: 'playful-fox', description: 'A charming little fox character...', imageUrl: 'https://picsum.photos/seed/fox/800/800', category: 'Animals', dateCreated: '2024-04-20', difficulty: 'Beginner', materials: 'Kraft Paper' },
+    { id: '5', title: 'Abstract Sculpture', slug: 'abstract-sculpture', description: 'Exploring form and texture...', imageUrl: 'https://picsum.photos/seed/abstract1/800/800', category: 'Abstract Art', dateCreated: '2024-05-12', difficulty: 'Advanced', materials: 'Elephant Hide Paper' },
+    { id: '6', title: 'Delicate Butterfly', slug: 'delicate-butterfly', description: 'A beautiful butterfly...', imageUrl: 'https://picsum.photos/seed/butterfly/800/800', category: 'Animals', dateCreated: '2024-06-01', difficulty: 'Intermediate', materials: 'Chiyogami Paper' },
+    { id: '7', title: 'Origami Rose', slug: 'origami-rose', description: 'A classic Kawasaki rose...', imageUrl: 'https://picsum.photos/seed/rose/800/800', category: 'Flowers', dateCreated: '2024-06-15', difficulty: 'Advanced', materials: 'Origami Paper' },
+    { id: '8', title: 'Modular Cube', slug: 'modular-cube', description: 'A simple yet satisfying...', imageUrl: 'https://picsum.photos/seed/cube/800/800', category: 'Geometric', dateCreated: '2024-07-01', difficulty: 'Beginner', materials: 'Construction Paper' },
+ ];
  return allPieces.map((piece) => ({
     slug: piece.slug,
   }));
@@ -60,13 +69,13 @@ export default async function OrigamiPiecePage({ params }: OrigamiPiecePageProps
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
            {/* Image */}
-           <div className="md:col-span-3 aspect-square relative rounded-lg overflow-hidden shadow-md">
+           <div className="md:col-span-3 aspect-square relative rounded-lg overflow-hidden shadow-md bg-muted/30">
              <Image
                src={piece.imageUrl}
                alt={piece.title}
-               layout="fill"
-               objectFit="contain" // Use contain to show the whole piece
-               className="bg-muted/30"
+               fill // Use fill instead of layout="fill"
+               style={{ objectFit: "contain" }} // Use style prop for objectFit
+               className="mix-blend-luminosity" // Helps blend image better on dark bg
                data-ai-hint={`${piece.category} origami`}
              />
            </div>
@@ -74,11 +83,11 @@ export default async function OrigamiPiecePage({ params }: OrigamiPiecePageProps
             {/* Details */}
            <div className="md:col-span-2 space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold mb-3 border-b pb-2">Description</h2>
+              <h2 className="text-2xl font-semibold mb-3 border-b border-border/50 pb-2">Description</h2>
               <p className="text-muted-foreground leading-relaxed">{piece.description}</p>
             </div>
 
-             <Separator/>
+             <Separator className="border-border/50"/>
 
             <div className="space-y-3">
                  <h3 className="text-lg font-medium">Details</h3>

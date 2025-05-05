@@ -21,8 +21,8 @@ export function BlogPostCard({ post, className }: BlogPostCardProps) {
             <Image
               src={post.imageUrl}
               alt={post.title}
-              layout="fill"
-              objectFit="cover"
+              fill // Use fill instead of layout="fill"
+              style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={`origami blog ${post.category}`}
             />
@@ -40,7 +40,7 @@ export function BlogPostCard({ post, className }: BlogPostCardProps) {
              <Calendar className="mr-1 h-3 w-3" />
              {format(new Date(post.date), 'MMM d, yyyy')}
            </div>
-           <div className="flex items-center text-accent-foreground group-hover:text-primary transition-colors">
+           <div className="flex items-center text-primary group-hover:text-primary/80 transition-colors"> {/* Adjusted hover color for dark theme */}
              Read More <ArrowRight className="ml-1 h-3 w-3"/>
            </div>
         </CardFooter>

@@ -14,8 +14,8 @@ export default function AboutPage() {
               <Image
                 src="https://picsum.photos/seed/profile/600/600" // Placeholder personal image
                 alt="Photo of the origami artist"
-                layout="fill"
-                objectFit="cover"
+                fill // Use fill instead of layout="fill"
+                style={{ objectFit: "cover" }} // Use style prop for objectFit
                  data-ai-hint="person portrait artist"
               />
              </div>
@@ -31,7 +31,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <Separator className="my-12" />
+        <Separator className="my-12 border-border/50" />
 
         <div className="text-center mb-12">
              <h2 className="text-3xl font-semibold mb-4">My Journey</h2>
@@ -47,8 +47,8 @@ export default function AboutPage() {
                        <Image
                            src="https://picsum.photos/seed/workspace/800/450"
                            alt="Origami workspace with paper and tools"
-                           layout="fill"
-                           objectFit="cover"
+                           fill // Use fill instead of layout="fill"
+                           style={{ objectFit: "cover" }} // Use style prop for objectFit
                            data-ai-hint="artist workspace desk paper tools"
                         />
                    </div>
@@ -64,8 +64,8 @@ export default function AboutPage() {
                        <Image
                            src="https://picsum.photos/seed/finishedpieces/800/450"
                            alt="Collection of finished origami pieces"
-                           layout="fill"
-                           objectFit="cover"
+                           fill // Use fill instead of layout="fill"
+                           style={{ objectFit: "cover" }} // Use style prop for objectFit
                             data-ai-hint="origami collection display shelf"
                         />
                    </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
            </Card>
         </div>
 
-         <Separator className="my-12" />
+         <Separator className="my-12 border-border/50" />
 
          <div className="text-center">
              <h2 className="text-3xl font-semibold mb-4">Philosophy</h2>

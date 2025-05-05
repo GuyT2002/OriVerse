@@ -6,6 +6,7 @@ import { Calendar, Tag, User } from 'lucide-react'; // User for author
 import { format } from 'date-fns';
 import { Separator } from '@/components/ui/separator';
 import ReactMarkdown from 'react-markdown'; // Example: Use react-markdown if content is Markdown
+import { cn } from '@/lib/utils';
 
 // Mock data fetching function - replace with actual data source access
 async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -50,7 +51,11 @@ Experiment to find what works best for you and the specific model!
 
 // Generate static paths if using SSG
 export async function generateStaticParams() {
- const allPosts: BlogPost[] = [ /* Copy mock data here */ ]; // Need data access here too
+ const allPosts: BlogPost[] = [ // Need data access here too
+    { slug: 'beginner-crane-tutorial', title: 'Easy Origami Crane Tutorial for Beginners', date: '2024-05-01', excerpt: 'Learn to fold the iconic origami crane...', imageUrl: 'https://picsum.photos/seed/craneblog/1200/600', content: '...', category: 'Beginner Tutorials' },
+    { slug: 'my-origami-journey', title: 'Finding Calm in Creases: My Origami Story', date: '2024-04-15', excerpt: 'Discover how paper folding became...', imageUrl: 'https://picsum.photos/seed/journey/1200/600', content: '...', category: 'My Origami Journey' },
+     { slug: 'choosing-paper', title: 'The Best Paper for Your Origami Projects', date: '2024-03-28', excerpt: 'Unlock the secrets to selecting the perfect paper...', imageUrl: 'https://picsum.photos/seed/paper/1200/600', content: '...', category: 'Materials' },
+ ];
  return allPosts.map((post) => ({
     slug: post.slug,
   }));
@@ -70,15 +75,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="container max-w-screen-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <article className="prose prose-lg dark:prose-invert max-w-none"> {/* Use Tailwind Typography plugin */}
+      {/* Use Tailwind Typography plugin and adjust for dark mode */}
+      <article className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
         <header className="mb-8">
            {/* Featured Image */}
           <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-md mb-6">
             <Image
               src={post.imageUrl}
               alt={post.title}
-              layout="fill"
-              objectFit="cover"
+              fill // Use fill instead of layout="fill"
+              style={{ objectFit: "cover" }} // Use style prop for objectFit
               priority
               data-ai-hint={`origami blog ${post.category}`}
             />
@@ -104,18 +110,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                </div>
              )}
           </div>
-           <Separator className="!my-6"/> {/* Use ! to override prose styles if needed */}
+           <Separator className="!my-6 border-border/50"/> {/* Use ! to override prose styles if needed */}
         </header>
 
         {/* Post Content */}
-        {/* Render Markdown or HTML content. Example with react-markdown */}
+        {/* Render Markdown or HTML content. */}
         <ReactMarkdown
             components={{
                 // Customize rendering of elements if needed
-                // e.g., add styling to images, links, etc.
-                img: ({node, ...props}) => <Image {...props} width={800} height={450} className="rounded-md shadow-sm mx-auto" layout="responsive" alt={props.alt || ""} />,
+                img: ({node, ...props}) => (
+                    <Image
+                        {...props}
+                        src={props.src || ""}
+                        width={800}
+                        height={450}
+                        className="rounded-md shadow-sm mx-auto my-6" // Added my-6 for margin
+                        style={{ objectFit: 'contain', width: '100%', height: 'auto' }} // Ensure responsive image
+                        alt={props.alt || ""}
+                     />
+                ),
                 a: ({node, ...props}) => <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer"/>,
-                // Add more custom components for headings, lists, etc.
+                h2: ({node, ...props}) => <h2 {...props} className="!mt-10 !mb-4" />, // Adjust heading margins
+                ul: ({node, ...props}) => <ul {...props} className="!my-4" />,
+                ol: ({node, ...props}) => <ol {...props} className="!my-4" />,
+                p: ({node, ...props}) => <p {...props} className="!my-4" />,
             }}
          >
             {post.content}
@@ -123,7 +141,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
 
         {/* Optional: Add Comment Section */}
-        {/* <Separator className="!my-10"/>
+        {/* <Separator className="!my-10 border-border/50"/>
         <section>
           <h2 className="text-2xl font-semibold mb-4">Comments</h2>
           {/* Placeholder for comment system implementation */}
