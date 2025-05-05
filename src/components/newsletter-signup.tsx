@@ -31,7 +31,7 @@ export function NewsletterSignup() {
 
   return (
     <section className="bg-muted py-12">
-      <div className="container max-w-screen-md text-center">
+      <div className="container max-w-screen-md text-center px-4 mx-auto"> {/* Added mx-auto and px-4 */}
         <h2 className="text-2xl font-semibold mb-3">Stay Inspired</h2>
         <p className="text-muted-foreground mb-6">
           Subscribe to our newsletter for the latest origami tutorials, creations, and stories delivered straight to your inbox.

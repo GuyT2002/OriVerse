@@ -23,7 +23,7 @@ Folding 'The Defect' from Slay the Spire was a journey into complex geometry and
 This model pushes the boundaries of single-sheet origami, demanding patience and a deep understanding of paper manipulation. The final result, though challenging, captures the essence of this unique game character.
     `, category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
 
-    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer...', imageUrl: 'https://picsum.photos/seed/archerblog/1200/600', content: `
+    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer...', imageUrl: 'https://picsum.photos/seed/archerblogdetailed/1200/600', content: `
 Creating the Origami Archer began with a simple sketch and the desire to capture a dynamic pose. Double tissue paper was chosen for its strength and ability to hold fine details.
 
 **Design Process:**
@@ -33,7 +33,7 @@ Creating the Origami Archer began with a simple sketch and the desire to capture
 4.  **Refinement:** Numerous iterations were needed to refine the proportions, posture, and details like the quiver.
 
 Designing original models is a rewarding process of trial, error, and discovery.
-    `, category: 'Original Designs', dataAiHint: "origami archer green detailed" },
+    `, category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" }, // Updated image seed and hint
 
      { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: 'https://picsum.photos/seed/kingfisherblog/1200/600', content: `
 The Crested Kingfisher presents a beautiful challenge with its distinctive crest and elegant shape. Washi paper provided the right texture and color.
@@ -91,7 +91,7 @@ You've folded a duck! Color in an eye if you wish.
 export async function generateStaticParams() {
  const allPosts: Array<BlogPost | Tutorial> = [ // Need data access here too
      { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: '...', imageUrl: '...', content: '...', category: 'Advanced Creations' },
-     { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs' },
+     { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs' }, // Keep archer here
      { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: '...', imageUrl: '...', content: '...', category: 'Animals'},
      { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: '...', imageUrl: '...', content: '...', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
      { slug: 'playful-surfing-bird', title: 'Bringing the Surfing Bird to Life', date: '2024-03-25', excerpt: '...', imageUrl: '...', content: '...', category: 'Original Designs'},
