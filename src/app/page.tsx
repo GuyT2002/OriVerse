@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -9,16 +10,16 @@ import type { OrigamiPiece, BlogPost } from '@/types';
 
 // Mock data - Updated with local image paths from public/images
 const featuredOrigami: OrigamiPiece[] = [
-  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: '/images/defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
+  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation of The Defect character from the game Slay the Spire.', imageUrl: '/images/the_defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced', materials: 'Tissue Foil Paper', dataAiHint: "slay the spire defect character" },
   { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer, poised with bow and arrow.', imageUrl: '/images/archer.jpg', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced', materials: 'Double Tissue Paper', dataAiHint: "green archer fantasy origami" },
   { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster, capturing the bird\'s stance and plumage.', imageUrl: '/images/rooster.jpg', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate', materials: 'Origami Paper', dataAiHint: "origami rooster red" },
-  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly.', imageUrl: '/images/kingfisher.jpg', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper', dataAiHint: "blue bird kingfisher" },
+  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model of a Crested Kingfisher perched elegantly.', imageUrl: '/images/crested_kingfisher.jpg', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate', materials: 'Washi Paper', dataAiHint: "blue bird kingfisher" },
 ];
 
 const featuredPosts: BlogPost[] = [
-  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision.', imageUrl: '/images/defect.jpg', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
+  { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire, a test of patience and precision.', imageUrl: '/images/the_defect.jpg', content: '', category: 'Advanced Creations', dataAiHint: "origami character blue yellow" },
   { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey of designing and folding an original origami archer character.', imageUrl: '/images/archer.jpg', content: '', category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" },
-  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details.', imageUrl: '/images/kingfisher.jpg', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
+  { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher, focusing on posture and feather details.', imageUrl: '/images/crested_kingfisher.jpg', content: '', category: 'Animals', dataAiHint: "origami kingfisher blue bird"},
 ];
 
 
@@ -28,10 +29,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center text-center text-white overflow-hidden">
         <Image
-          src="/images/defect.jpg" // Updated to use local image
+          src="/images/the_defect.jpg" // Updated hero image
           alt="Stunning Origami Piece Hero Image - The Defect"
-          fill // Use fill instead of layout="fill"
-          style={{ objectFit: "cover" }} // Use style prop for objectFit
+          fill
+          style={{ objectFit: "cover" }}
           quality={85}
           className="absolute inset-0 z-0"
           priority // Load hero image faster

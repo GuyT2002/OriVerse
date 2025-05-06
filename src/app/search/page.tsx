@@ -14,13 +14,13 @@ const allBlogPosts: BlogPost[] = [
    { slug: 'beginner-duck-tutorial', title: 'Easy Origami Duck Tutorial', date: '2024-02-15', excerpt: 'Learn the classic duck fold. A perfect start!', imageUrl: '/images/duck.jpg', content: '', category: 'Beginner Tutorials', skillLevel: 'Beginner' },
    { slug: 'rooster-folding-tips', title: 'Tips for Folding a Crisp Origami Rooster', date: '2024-05-20', excerpt: 'Discover techniques for sharp creases...', imageUrl: '/images/rooster.jpg', content: '', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
    { slug: 'designing-the-archer', title: 'Designing the Origami Archer', date: '2024-07-01', excerpt: 'A look into the creative journey...', imageUrl: '/images/archer.jpg', content: '', category: 'Original Designs' },
-   { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process...', imageUrl: '/images/defect.jpg', content: '', category: 'Advanced Creations'},
+   { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process...', imageUrl: '/images/the_defect.jpg', content: '', category: 'Advanced Creations'},
 ];
 const allOrigamiPieces: OrigamiPiece[] = [
-  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation...', imageUrl: '/images/defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced' },
+  { id: 'sts-defect', title: 'The Defect (Slay the Spire)', slug: 'sts-defect', description: 'A complex origami interpretation...', imageUrl: '/images/the_defect.jpg', category: 'Characters', dateCreated: '2024-07-10', difficulty: 'Advanced' },
   { id: 'origami-archer', title: 'Origami Archer', slug: 'origami-archer', description: 'An original design of a hooded archer...', imageUrl: '/images/archer.jpg', category: 'Characters', dateCreated: '2024-06-25', difficulty: 'Advanced' },
   { id: 'paper-rooster', title: 'Paper Rooster', slug: 'paper-rooster', description: 'A proud origami rooster...', imageUrl: '/images/rooster.jpg', category: 'Animals', dateCreated: '2024-05-15', difficulty: 'Intermediate' },
-  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model...', imageUrl: '/images/kingfisher.jpg', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate' },
+  { id: 'crested-kingfisher', title: 'Crested Kingfisher', slug: 'crested-kingfisher', description: 'A delicate origami model...', imageUrl: '/images/crested_kingfisher.jpg', category: 'Animals', dateCreated: '2024-04-01', difficulty: 'Intermediate' },
   { id: 'surfing-bird', title: 'Surfing Bird', slug: 'surfing-bird', description: 'An original design featuring a bird...', imageUrl: '/images/surfing_bird.jpg', category: 'Original Designs', dateCreated: '2024-03-20', difficulty: 'Intermediate' },
   { id: 'simple-duck', title: 'Simple Duck', slug: 'simple-duck', description: 'A charming and straightforward duck...', imageUrl: '/images/duck.jpg', category: 'Animals', dateCreated: '2024-02-10', difficulty: 'Beginner' },
 ];

@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -45,7 +46,7 @@ export default function AboutPage() {
                 <CardHeader className="p-0">
                    <div className="aspect-video relative">
                        <Image
-                           src="/images/defect.jpg" // Updated to use local image
+                           src="/images/the_defect.jpg" // Updated to use local image
                            alt="Origami workspace with paper and tools"
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit
@@ -62,7 +63,7 @@ export default function AboutPage() {
                 <CardHeader className="p-0">
                    <div className="aspect-video relative">
                        <Image
-                           src="/images/kingfisher.jpg" // Updated to use local image
+                           src="/images/crested_kingfisher.jpg" // Updated to use local image
                            alt="Collection of finished origami pieces"
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit

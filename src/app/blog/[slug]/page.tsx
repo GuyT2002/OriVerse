@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { BlogPost, Tutorial } from '@/types'; // Import Tutorial type
@@ -13,7 +14,7 @@ import Link from 'next/link'; // Import Link for video link
 // Updated with local image paths from public/images
 async function getBlogPostBySlug(slug: string): Promise<BlogPost | Tutorial | null> {
   const allPosts: Array<BlogPost | Tutorial> = [ // Combine BlogPost and Tutorial types
-    { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: '/images/defect.jpg', content: `
+    { slug: 'folding-the-defect', title: 'Folding The Defect: A Complex Challenge', date: '2024-07-15', excerpt: 'Explore the intricate process behind folding The Defect from Slay the Spire...', imageUrl: '/images/the_defect.jpg', content: `
 Folding 'The Defect' from Slay the Spire was a journey into complex geometry and character interpretation. Using tissue foil paper allowed for both sharp creases and the necessary shaping for its robotic form.
 
 **Key Challenges:**
@@ -36,7 +37,7 @@ Creating the Origami Archer began with a simple sketch and the desire to capture
 Designing original models is a rewarding process of trial, error, and discovery.
     `, category: 'Original Designs', dataAiHint: "green archer fantasy origami detailed" },
 
-     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: '/images/kingfisher.jpg', content: `
+     { slug: 'kingfisher-on-perch', title: 'Capturing the Crested Kingfisher in Paper', date: '2024-04-10', excerpt: 'Learn about the techniques used to fold a realistic Crested Kingfisher...', imageUrl: '/images/crested_kingfisher.jpg', content: `
 The Crested Kingfisher presents a beautiful challenge with its distinctive crest and elegant shape. Washi paper provided the right texture and color.
 
 **Folding Techniques:**
@@ -93,9 +94,9 @@ export async function generateStaticParams() {
  // Use the same data source as getBlogPostBySlug for consistency
  // Updated with local image paths from public/images
  const allPosts: Array<BlogPost | Tutorial> = [
-     { slug: 'folding-the-defect', title: '...', date: '...', excerpt: '...', imageUrl: '/images/defect.jpg', content: '...', category: 'Advanced Creations' },
+     { slug: 'folding-the-defect', title: '...', date: '...', excerpt: '...', imageUrl: '/images/the_defect.jpg', content: '...', category: 'Advanced Creations' },
      { slug: 'designing-the-archer', title: '...', date: '...', excerpt: '...', imageUrl: '/images/archer.jpg', content: '...', category: 'Original Designs' },
-     { slug: 'kingfisher-on-perch', title: '...', date: '...', excerpt: '...', imageUrl: '/images/kingfisher.jpg', content: '...', category: 'Animals'},
+     { slug: 'kingfisher-on-perch', title: '...', date: '...', excerpt: '...', imageUrl: '/images/crested_kingfisher.jpg', content: '...', category: 'Animals'},
      { slug: 'rooster-folding-tips', title: '...', date: '...', excerpt: '...', imageUrl: '/images/rooster.jpg', content: '...', category: 'Intermediate Tutorials', skillLevel: 'Intermediate'},
      { slug: 'playful-surfing-bird', title: '...', date: '...', excerpt: '...', imageUrl: '/images/surfing_bird.jpg', content: '...', category: 'Original Designs'},
      { slug: 'beginner-duck-tutorial', title: '...', date: '...', excerpt: '...', imageUrl: '/images/duck.jpg', content: '...', category: 'Beginner Tutorials', skillLevel: 'Beginner'},
