@@ -1,0 +1,71 @@
+name: Build and Deploy OriVerse to GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch (usually 'main' or 'master')
+  push:
+    branches:
+      - master # Or whatever your default branch is called
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build_and_deploy: # You can name this job anything
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          # IMPORTANT: Specify your Node.js version.
+          # Check your project's requirements or your package.json "engines" field.
+          # If unsure, a recent LTS version like '20' or '18' is often a good start.
+          node-version: '20'
+          cache: 'npm' # Cache npm dependencies for faster subsequent builds
+
+      - name: Install dependencies
+        # 'npm ci' is generally recommended for CI as it uses the package-lock.json
+        # and provides cleaner, more reproducible builds.
+        run: npm ci
+
+      - name: Build project
+        # IMPORTANT: Replace 'npm run build' if your build script in package.json is different!
+        # For example, if it's 'npm run generate-static-site', use that here.
+        run: npm run build
+        # If your build process needs specific environment variables (like the base path),
+        # you can often set them here, though configuring them in the tool's config file (like vite.config.js) is usually better.
+        # env:
+        #   NODE_ENV: production # Often set by default by build tools
+
+      - name: Set up Pages
+        # This action prepares the environment for deploying to GitHub Pages.
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # IMPORTANT: Change './dist' to your project's actual build output directory!
+          # Common names: 'dist' (used by Vite, SvelteKit), 'build' (used by Create React App),
+          # 'out' (used by Next.js static export).
+          path: ./src/app
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
