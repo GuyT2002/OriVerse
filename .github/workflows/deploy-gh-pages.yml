@@ -64,7 +64,7 @@ jobs:
           # IMPORTANT: Change './dist' to your project's actual build output directory!
           # Common names: 'dist' (used by Vite, SvelteKit), 'build' (used by Create React App),
           # 'out' (used by Next.js static export).
-          path: ./dist
+          path: ./src/app
 
       - name: Deploy to GitHub Pages
         id: deployment
