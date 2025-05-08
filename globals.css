@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Grey Theme */
+    --background: 240 4% 12%; /* Dark Grey */
+    --foreground: 0 0% 98%; /* Almost White */
+
+    --card: 240 4% 16%; /* Slightly lighter grey */
+    --card-foreground: 0 0% 98%; /* Almost White */
+
+    --popover: 240 4% 16%; /* Slightly lighter grey */
+    --popover-foreground: 0 0% 98%; /* Almost White */
+
+    --primary: 0 0% 80%; /* Light Grey for primary elements */
+    --primary-foreground: 240 4% 10%; /* Dark Grey for text on primary */
+
+    --secondary: 240 4% 22%; /* Medium Grey */
+    --secondary-foreground: 0 0% 98%; /* Almost White */
+
+    --muted: 240 4% 30%; /* Medium-Dark Grey */
+    --muted-foreground: 0 0% 65%; /* Lighter Grey for muted text */
+
+    --accent: 207 80% 60%; /* Pastel Blue */
+    --accent-foreground: 240 4% 10%; /* Dark Grey for text on accent */
+
+    --destructive: 0 70% 50%; /* Slightly desaturated red */
+    --destructive-foreground: 0 0% 98%; /* Almost White */
+
+    --border: 240 4% 25%; /* Grey for borders */
+    --input: 240 4% 25%; /* Grey for input backgrounds */
+    --ring: 207 80% 60%; /* Pastel Blue to match accent */
+
+    --chart-1: 220 70% 50%; /* Chart colors adjusted for dark bg */
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar colors adapted for dark grey theme */
+    --sidebar-background: 240 4% 10%; /* Slightly darker than main bg */
+    --sidebar-foreground: 0 0% 90%; /* Light grey */
+    --sidebar-primary: 0 0% 80%; /* Match primary */
+    --sidebar-primary-foreground: 240 4% 10%; /* Match primary-foreground */
+    --sidebar-accent: 240 4% 25%; /* Match border/input */
+    --sidebar-accent-foreground: 0 0% 98%; /* Almost White */
+    --sidebar-border: 240 4% 20%; /* Darker border */
+    --sidebar-ring: 207 80% 60%; /* Match accent */
+  }
+
+  /* Removed .dark selector as the default theme is now dark */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Enable optional ligatures */
+  }
+}
+
+/* Custom shadow style for hero text */
+.shadow-text {
+   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
