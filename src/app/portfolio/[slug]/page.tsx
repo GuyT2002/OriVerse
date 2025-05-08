@@ -69,7 +69,7 @@ export default async function OrigamiPiecePage({ params }: OrigamiPiecePageProps
                className="mix-blend-luminosity" // Helps blend image better on dark bg
                data-ai-hint={piece.dataAiHint || `${piece.category} origami`}
                priority // Load image sooner as it's the main content
-               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 768px" // Provide sizes prop
+               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 500px" // Provide more specific sizes prop based on grid layout
              />
            </div>
 

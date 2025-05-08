@@ -26,6 +26,9 @@ export function BlogPostCard({ post, className }: BlogPostCardProps) {
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={post.dataAiHint || `origami blog ${post.category}`} // Use provided hint or generate default
+              // Sizes optimized for common grid layouts (1, 2, or 3 columns)
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              loading="lazy" // Cards are usually below the fold
             />
           </div>
         </CardHeader>

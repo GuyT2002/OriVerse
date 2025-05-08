@@ -135,9 +135,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               alt={post.title}
               fill // Use fill instead of layout="fill"
               style={{ objectFit: "cover" }} // Use style prop for objectFit
-              priority
+              priority // Prioritize loading the main post image
               data-ai-hint={post.dataAiHint || `origami blog ${post.category}`} // Use provided hint
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 768px" // Provide sizes prop
+              sizes="(max-width: 768px) 100vw, 768px" // More specific sizes for the layout
             />
           </div>
 
@@ -191,6 +191,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         alt={props.alt || ""}
                         // Add sizes prop if image widths vary significantly
                         sizes="(max-width: 768px) 100vw, 768px"
+                        loading="lazy" // Lazy load images within the content
                      />
                 ),
                 a: ({node, ...props}) => <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer"/>,

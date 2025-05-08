@@ -18,6 +18,8 @@ export default function AboutPage() {
                 fill // Use fill instead of layout="fill"
                 style={{ objectFit: "cover" }} // Use style prop for objectFit
                  data-ai-hint="person portrait artist"
+                 priority // Prioritize loading the main author image
+                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 300px" // Adjust sizes based on grid layout
               />
              </div>
           </div>
@@ -51,6 +53,8 @@ export default function AboutPage() {
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit
                            data-ai-hint="artist workspace desk paper tools"
+                           sizes="(max-width: 768px) 100vw, 50vw" // Sizes for two-column layout
+                           loading="lazy" // Lazy load secondary images
                         />
                    </div>
                 </CardHeader>
@@ -68,6 +72,8 @@ export default function AboutPage() {
                            fill // Use fill instead of layout="fill"
                            style={{ objectFit: "cover" }} // Use style prop for objectFit
                             data-ai-hint="origami collection display shelf"
+                            sizes="(max-width: 768px) 100vw, 50vw" // Sizes for two-column layout
+                            loading="lazy" // Lazy load secondary images
                         />
                    </div>
                 </CardHeader>

@@ -33,9 +33,10 @@ export default function Home() {
           alt="Stunning Origami Piece Hero Image - The Defect"
           fill
           style={{ objectFit: "cover" }}
-          quality={85}
+          quality={90} // Slightly increase quality for hero if desired
           className="absolute inset-0 z-0"
           priority // Load hero image faster
+          sizes="100vw" // Hero image spans the full viewport width
           data-ai-hint="origami character blue yellow" // Update AI hint
         />
         {/* Overlay */}
@@ -94,9 +95,10 @@ export default function Home() {
               alt="Surfing Bird origami"
               fill
               style={{ objectFit: 'contain' }}
-              sizes="(max-width: 768px) 100vw, 500px"
+              sizes="(max-width: 768px) 90vw, 500px" // Adjusted sizes
               className="rounded-lg shadow-md"
               data-ai-hint="origami bird surfing wave"
+              loading="lazy" // Explicitly lazy load non-critical images
             />
           </div>
           <p className="mt-4 text-muted-foreground">An example of an original design: The Surfing Bird.</p>

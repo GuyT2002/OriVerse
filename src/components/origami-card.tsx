@@ -25,6 +25,9 @@ export function OrigamiCard({ piece, className }: OrigamiCardProps) {
               style={{ objectFit: "cover" }} // Use style prop for objectFit
               className="transition-transform duration-300 group-hover:scale-105"
               data-ai-hint={piece.dataAiHint || `${piece.category} origami`} // Use provided hint or generate default
+               // Sizes optimized for common grid layouts (1, 2, 3 or 4 columns)
+              sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 23vw"
+              loading="lazy" // Cards are usually below the fold
             />
           </div>
         </CardHeader>
