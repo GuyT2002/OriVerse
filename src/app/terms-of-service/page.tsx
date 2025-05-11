@@ -1,10 +1,12 @@
 
+import { CurrentDate } from '@/components/current-date';
+
 export default function TermsOfServicePage() {
   return (
     <div className="container max-w-screen-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
       <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4">
-        <p><strong>Last Updated: {new Date().toLocaleDateString()}</strong></p>
+         <p><strong>Last Updated: <CurrentDate /></strong></p>
 
         <p>Welcome to OriVerse! These Terms of Service ("Terms") govern your use of the OriVerse website located at [Your Website URL] (the "Site") and any related services provided by OriVerse.</p>
         <p>By accessing or using the Site, you agree to be bound by these Terms. If you disagree with any part of the terms, then you do not have permission to access the Site.</p>

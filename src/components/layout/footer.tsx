@@ -1,10 +1,34 @@
+
+"use client"; // Mark as client component because it uses state/effects for the year
+
 import Link from 'next/link';
 import { Instagram, Youtube, Facebook, Send } from 'lucide-react'; // Assuming Pinterest not available in lucide-react, replaced with Facebook
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { useState, useEffect } from 'react';
+
+// Create a simple client component to render the dynamic year
+function CurrentYear() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  return year !== null ? <>{year}</> : <>{new Date().getFullYear()}</>; // Fallback for SSR/initial render
+}
+
 
 export function Footer() {
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+     e.preventDefault();
+     // Add newsletter submission logic here
+     console.log("Newsletter submitted");
+     // Example: Show toast message (ensure useToast is imported and used if needed)
+   };
+
+
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto max-w-screen-2xl py-12 px-4 sm:px-6 lg:px-8">
@@ -52,8 +76,8 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Newsletter</h3>
             <p className="text-sm text-muted-foreground mb-3">Get updates on new posts and tutorials.</p>
-            <form className="flex space-x-2">
-              <Input type="email" placeholder="Your email" className="flex-1 bg-background" />
+            <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
+              <Input type="email" placeholder="Your email" className="flex-1 bg-background" aria-label="Newsletter email input" />
               <Button type="submit" size="icon" aria-label="Subscribe to newsletter">
                 <Send className="h-4 w-4" />
               </Button>
@@ -64,7 +88,7 @@ export function Footer() {
         <Separator className="my-8 bg-border/50" />
 
         <div className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} OriVerse. All rights reserved. Website crafted with passion.
+          © <CurrentYear /> OriVerse. All rights reserved. Website crafted with passion.
         </div>
       </div>
     </footer>
