@@ -2,17 +2,17 @@
   "name": "nextn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://guyt2002.github.io/OriVerse",
+  "homepage": "http://guyt2002.github.io/OriVerse",
   "scripts": {
     "dev": "next dev --turbopack -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d src/app",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d src/app"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.6.2",
